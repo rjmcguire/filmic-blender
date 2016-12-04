@@ -1,6 +1,6 @@
 {
-  "name": "Filmic-blender",
-  "tagline": "Filmic transformations for Blender",
+  "name": "Filmic Blender",
+  "tagline": "Filmic View and Look Transformations for Blender",
   "body": "What?\r\n=====\r\n\r\nThis OpenColorIO configuration adds a closer-to-photorealistic view transform for your renders. For imagers working with non-photorealistic rendering, it also will bring significant dynamic range and lighting capabilities to your work.\r\n\r\nWhy?\r\n====\r\n\r\nBecause the basic sRGB EOTF was never designed for rendering and should be avoided. This configuration\r\nis as close as one will get to a magic button to help an imager elevate their rendering immediately.\r\n\r\nHow?\r\n====\r\n\r\n 1. Download this repository. Replace your current OpenColorIO configuration in Blender with this version.\r\nThe Blender OpenColorIO configuration directory is located in:\r\n\r\n        BLENDER/bin/VERSIONNUMBER/datafiles/colormanagement\r\n\r\n    Move the existing ````colormanagement```` directory to a backup location, and place the contents of\r\n    this repository into a new ````colormanagement```` directory.\r\n    \r\n    Optionally, instead of replacing the actual directory, use the envrionment variable to specify where the OCIO configuration lives:\r\n\r\n        export OCIO=/path/to/where/the/filmic-blender/config.ocio\r\n 1. From within the Color Management panel, change the View to your desired contrast level and render.\r\n",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
