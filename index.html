@@ -1,77 +1,95 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>Filmic Blender by sobotka</title>
+    <meta name="description" content="Filmic Blender : Filmic View and Look Transformations for Blender">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Filmic Blender</title>
   </head>
 
   <body>
-    <div id="container">
-      <div class="inner">
 
-        <header>
-          <h1>Filmic Blender</h1>
-          <h2>Filmic View and Look Transformations for Blender</h2>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/sobotka/filmic-blender">View on GitHub</a>
+
+          <h1 id="project_title">Filmic Blender</h1>
+          <h2 id="project_tagline">Filmic View and Look Transformations for Blender</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/sobotka/filmic-blender/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/sobotka/filmic-blender/tarball/master">Download this project as a tar.gz file</a>
+            </section>
         </header>
+    </div>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/sobotka/filmic-blender/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/sobotka/filmic-blender/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/sobotka/filmic-blender" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="who" class="anchor" href="#who" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Who?</h1>
 
-        <hr>
+<p>This is a simple OpenColorIO configuration for intermediate to advanced imagers using Blender's Cycles raytracing engine.</p>
 
-        <section id="main_content">
-          <h1>
+<h1>
 <a id="what" class="anchor" href="#what" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What?</h1>
 
-<p>This OpenColorIO configuration adds a closer-to-photorealistic view transform for your renders. For imagers working with non-photorealistic rendering, it also will bring significant dynamic range and lighting capabilities to your work.</p>
+<p>This OpenColorIO configuration adds a closer-to-photorealistic view transform for your renders. For imagers working with non-photorealistic rendering, it also will bring significant dynamic range and lighting capabilities to your work, as well as potentially open up correct transforms for rendering to HDR displays and other such forward looking technology. It is as close to a Magic Button you can get for an experienced imager.</p>
+
+<h1>
+<a id="when" class="anchor" href="#when" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>When?</h1>
+
+<p>This repository is ready to use right now, with no compilation or special Blender application binaries required.</p>
 
 <h1>
 <a id="why" class="anchor" href="#why" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Why?</h1>
 
-<p>Because the basic sRGB EOTF was never designed for rendering and should be avoided. This configuration
-is as close as one will get to a magic button to help an imager elevate their rendering immediately.</p>
+<p>Because the basic sRGB EOTF was never designed for rendering and should be avoided. This configuration is as close as one will get to a magic button to help an imager elevate their rendering immediately.</p>
 
 <h1>
 <a id="how" class="anchor" href="#how" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How?</h1>
 
 <ol>
 <li>
-<p>Download this repository. Replace your current OpenColorIO configuration in Blender with this version.
-The Blender OpenColorIO configuration directory is located in:</p>
+<p>Download this repository. Replace your current OpenColorIO configuration in Blender with this version.</p>
 
-<pre><code>BLENDER/bin/VERSIONNUMBER/datafiles/colormanagement
-</code></pre>
+<ol>
+<li>
+<p>The Blender OpenColorIO configuration directory is located in:</p>
+
+<p>BLENDER/bin/VERSIONNUMBER/datafiles/colormanagement</p>
 
 <p>Move the existing <code>colormanagement</code> directory to a backup location, and place the contents of
 this repository into a new <code>colormanagement</code> directory.</p>
-
+</li>
+<li>
 <p>Optionally, instead of replacing the actual directory, use the envrionment variable to specify where the OCIO configuration lives:</p>
 
-<pre><code>export OCIO=/path/to/where/the/filmic-blender/config.ocio
-</code></pre>
+<p>export OCIO=/path/to/where/the/filmic-blender/config.ocio</p>
+</li>
+</ol>
 </li>
 <li>From within the Color Management panel, change the View to your desired contrast level and render.</li>
 </ol>
-        </section>
 
-        <footer>
-          Filmic Blender is maintained by <a href="https://github.com/sobotka">sobotka</a><br>
-          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-        
-      </div>
+<p>Once you have Blender utilising the configuration, you are free to render away. You may discover that some of your materials were broken due to exceptionally low lighting levels, and may require reworking. General PBR advice holds true when using wider and more photographic illumination levels.</p>
+      </section>
     </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Filmic Blender maintained by <a href="https://github.com/sobotka">sobotka</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
   </body>
 </html>
