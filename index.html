@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Filmic Blender : Filmic View and Look Transformations for Blender">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Filmic Blender</title>
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Filmic Blender by sobotka</title>
   </head>
 
   <body>
+    <div id="container">
+      <div class="inner">
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/sobotka/filmic-blender">View on GitHub</a>
-
-          <h1 id="project_title">Filmic Blender</h1>
-          <h2 id="project_tagline">Filmic View and Look Transformations for Blender</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/sobotka/filmic-blender/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/sobotka/filmic-blender/tarball/master">Download this project as a tar.gz file</a>
-            </section>
+        <header>
+          <h1>Filmic Blender</h1>
+          <h2>Filmic View and Look Transformations for Blender</h2>
         </header>
-    </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/sobotka/filmic-blender/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/sobotka/filmic-blender/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/sobotka/filmic-blender" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
 <a id="who" class="anchor" href="#who" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Who?</h1>
 
 <p>This is a simple OpenColorIO configuration for intermediate to advanced imagers using Blender's Cycles raytracing engine.</p>
@@ -39,7 +39,7 @@
 <h1>
 <a id="what" class="anchor" href="#what" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What?</h1>
 
-<p>This OpenColorIO configuration adds a closer-to-photorealistic view transform for your renders. For imagers working with non-photorealistic rendering, it also will bring significant dynamic range and lighting capabilities to your work, as well as potentially open up correct transforms for rendering to HDR displays and other such forward looking technology. It is as close to a Magic Button you can get for an experienced imager.</p>
+<p>This OpenColorIO configuration adds a closer-to-photorealistic view transform for your renders. For imagers working with non-photorealistic rendering, it also will bring significant dynamic range and lighting capabilities to your work, as well as potentially open up correct transforms for rendering to HDR displays and other such forward looking technology. It is as close to a Magic Button™ you can get for an experienced imager.</p>
 
 <h1>
 <a id="when" class="anchor" href="#when" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>When?</h1>
@@ -49,7 +49,7 @@
 <h1>
 <a id="why" class="anchor" href="#why" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Why?</h1>
 
-<p>Because the basic sRGB EOTF was never designed for rendering and should be avoided. This configuration is as close as one will get to a magic button to help an imager elevate their rendering immediately.</p>
+<p>Because the basic sRGB EOTF was never designed for rendering and should be avoided. This configuration is a step towards providing imagers with a reliable View transform and a Look set useful for modern raytracing engine CGI, animation, and visual effects work with real-world cameras.</p>
 
 <h1>
 <a id="how" class="anchor" href="#how" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How?</h1>
@@ -78,18 +78,139 @@ this repository into a new <code>colormanagement</code> directory.</p>
 </ol>
 
 <p>Once you have Blender utilising the configuration, you are free to render away. You may discover that some of your materials were broken due to exceptionally low lighting levels, and may require reworking. General PBR advice holds true when using wider and more photographic illumination levels.</p>
-      </section>
+
+<h1>
+<a id="additional-information-and-technical-details" class="anchor" href="#additional-information-and-technical-details" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Additional Information and Technical Details</h1>
+
+<p>The basic kit of weaponry includes:</p>
+
+<ol>
+<li>A set of View transforms that include:
+
+<ol>
+<li>
+<strong><em>sRGB EOTF</em></strong>. This is an accurate version of the sRGB transfer function. This is identical to what imagers would use as the "Default" View transform in Blender proper. Should be avoided at all costs for CGI work. Useful in some edge cases.</li>
+<li>
+<strong><em>Non-Colour Data</em></strong>. This is a view useful for evaluating a data format. Do not expect to see perceptual values however, as it is literally data dumped directly to the screen. Use this transform on your buffer, via the <em>UV Image Viewer</em> Properties panel, if your buffer represents data and not colour information. This will keep it out of the OpenColorIO transformation pipeline chain and leave it as data.</li>
+<li>
+<strong><em>Linear Raw</em></strong>. This is a colour managed linearized version of your data. For all intents an purposes, will look identical to <strong><em>Non-Colour Data</em></strong>, but applied to colour based data such as an image.</li>
+<li>
+<strong><em>Filmic Log Encoding Base</em></strong>. This is the workhorse View for all of your rendering work. Setting it in the View will result in a log encoded appearance, which will look exceptionally low contrast. Use this if you want to adjust the image for grading using another tool such as Resolve, with no additional modifications. Save to a high bit depth display referred format such as 16 bit TIFF.</li>
+</ol>
+</li>
+<li>
+<p>A set of Look transforms that include:</p>
+
+<ol>
+<li>
+<strong><em>Greyscale</em></strong>. This Look is based off of the <strong><em>Filmic Log Encoding Base</em></strong> and will deliver a weighted greyscale version of the image. The weights used are for REC.709 RGB lights, which are the same lights specified in sRGB.</li>
+<li>
+<p><strong><em>False Colour</em></strong>. This Look is a useful tool for evaluating your image in terms of the dynamic range and latitude. It is a colour coded "heat map" of your image values, according to the following codes:</p>
+
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Colour</th>
+<th>Scene Referred Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Low Clip</td>
+<td>Black</td>
+<td>Scene Referred Linear value below 0.0001762728758.</td>
+</tr>
+<tr>
+<td>-10 EV</td>
+<td>Purple</td>
+<td>Scene Referred Linear value 0.0001762728758.</td>
+</tr>
+<tr>
+<td>-7 EV</td>
+<td>Blue</td>
+<td>Scene Referred Linear value 0.001404109349.</td>
+</tr>
+<tr>
+<td>-4 EV</td>
+<td>Cyan</td>
+<td>Scene Linear value 0.01124714399.</td>
+</tr>
+<tr>
+<td>-2 EV</td>
+<td>Green</td>
+<td>Scene Referred Linear value 0.04456791864.</td>
+</tr>
+<tr>
+<td>0 EV</td>
+<td>Gray</td>
+<td>Scene Referred Linear value 0.18009142.</td>
+</tr>
+<tr>
+<td>+2 EV</td>
+<td>Green</td>
+<td>Scene Referred Linear value 0.7196344767.</td>
+</tr>
+<tr>
+<td>+4 EV</td>
+<td>Yellow</td>
+<td>Scene Referred Linear value 2.883658483.</td>
+</tr>
+<tr>
+<td>+5.5 EV</td>
+<td>Red</td>
+<td>Scene Referred Linear value 8.150007644.</td>
+</tr>
+<tr>
+<td>High Clip</td>
+<td>White</td>
+<td>Scene Referred Linear value above 16.29174024.</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Five contrast base looks for use with the <strong><em>Filmic Log Encoding Base</em></strong>. All map middle grey 0.18 to 0.5 display referred. Each has a smooth roll off on the shoulder and toe. They include:</p>
+
+<ol>
+<li>
+<strong><em>High Contrast</em></strong>.</li>
+<li>
+<strong><em>Medium High Contrast</em></strong>.</li>
+<li>
+<strong><em>Base Contrast</em></strong>. Similar to the sRGB contrast range, with a smoother toe.</li>
+<li>
+<strong><em>Medium Low Contrast</em></strong>.</li>
+<li>
+<strong><em>Low Contrast</em></strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+<h1>
+<a id="grading-your-work" class="anchor" href="#grading-your-work" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Grading Your Work</h1>
+
+<p>Given that images generated under Cycels are scene referred, many nodes in Blender, being broken, will not work properly. This may have been hidden if one used a range that perfectly mapped to the display referred domain such as the sRGB EOTF, however using a proper View transform exacerbates this brokenness.</p>
+
+<p>There are a good number of nodes that work absolutely fine. For grading, it is highly encouraged to use the ASC CDL node, as it operates on scene referred imagery perfectly well. It is in the <strong><em>Color -&gt; Color Balance</em></strong> node. Do <strong>not</strong> use the <strong><em>Lift, Gamma, Gain</em></strong> default as it is strictly a display referred formula and will break on scene referred imagery. Instead, change the drop down to <strong><em>ASC CDL</em></strong> and use the <em>Slope</em>, <em>Offset</em>, and <em>Power</em> controls to perform grading.</p>
+
+<p>Almost all of the Adobe PDF specification blend modes in the <strong><em>Mix</em></strong> node are also display referred and are broken for Cycles rendering. That includes but is not limited to Overlay, Screen, and other such modes.</p>
+
+<h1>
+<a id="issues" class="anchor" href="#issues" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Issues</h1>
+
+<p>Please post any and all issues to the issue tracker at GitHub.</p>
+        </section>
+
+        <footer>
+          Filmic Blender is maintained by <a href="https://github.com/sobotka">sobotka</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
     </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Filmic Blender maintained by <a href="https://github.com/sobotka">sobotka</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
   </body>
 </html>
